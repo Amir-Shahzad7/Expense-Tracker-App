@@ -32,10 +32,28 @@
   -webkit-box-shadow: 0 0 10px #C7C7C7;
   font-family: "Lato";
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-left: 600px;
   margin-right: 600px;
-  padding: 50px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.TransactionHistory{
+  margin-top: 15px;
+  text-indent: 600px;
+  font-family: "Lato";
+}
+.HorizontalLine{
+  border: none;
+  background:#C7C7C7;
+  height: 0.1px;
+  margin-left: 39%;
+  margin-right: 39%;
+  margin-top: 10px;
+}
+.AddTransaction{
+  font-family: "Lato";
+  text-indent: 600px;
+  margin-top: 35px;
 }
