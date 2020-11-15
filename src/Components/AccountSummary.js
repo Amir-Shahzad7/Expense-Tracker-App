@@ -7,7 +7,7 @@ const AccountSummary = () => {
                 <h4><b>INCOME</b></h4>
                 <p style={{ fontSize: "20px", color: "#2ECC71" }}>$0.00</p>
             </div>
-            <div style={{borderLeft: "1px solid #dedede", height: "55px"}}>
+            <div style={{borderLeft: "1px solid #dedede", height: "40px"}}>
 
             </div>
             <div>
