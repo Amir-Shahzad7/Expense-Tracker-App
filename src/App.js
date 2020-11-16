@@ -8,23 +8,24 @@ import TransactionHistory from './Components/TransactionHistory';
 
 function App() {
   return (
-  <div className="App">
-    <Header></Header>
-    <div>
-      <Balance></Balance>
+    <div className="App">
+      <Header></Header>
       <br />
+      <div>
+        <Balance></Balance>
+        <br />
+      </div>
+      <div>
+        <AccountSummary></AccountSummary>
+        <br />
+      </div>
+      <div>
+        <TransactionHistory></TransactionHistory>
+      </div>
+      <div>
+        <AddTransaction></AddTransaction>
+      </div>
     </div>
-    <div>
-      <AccountSummary></AccountSummary>
-      <br />
-    </div>
-    <div>
-      <TransactionHistory></TransactionHistory>
-    </div>
-    <div>
-      <AddTransaction></AddTransaction>
-    </div>
-  </div>
   );
 }
 
