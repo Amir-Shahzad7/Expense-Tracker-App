@@ -38,15 +38,15 @@
 .HorizontalLine{
   height: 1px;
   border-width: 1px 0px 0px 0px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .AddTransaction{
   font-family: "Lato";
-  padding-top: 40px;
+  padding-top: 30px;
 }
 .Form{
   font-family: "Lato";
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .InputBoxes{
   background-color: #f7f7f7;
