@@ -11,7 +11,7 @@ const Form = () => {
                 <br />
                 <label>Amount<br />(negative - expense, positive - income)</label>
                 <br />
-                <input type="text" className="InputBoxes" placeholder="Enter amount..."></input>
+                <input type="number" className="InputBoxes" placeholder="Enter amount..."></input>
                 <br />
                 <input type="submit" value="Add transaction" className="AddButton"></input>
             </form>

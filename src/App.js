@@ -10,11 +10,7 @@ import TransactionHistory from './Components/TransactionHistory';
 function App() {
   return (
     <div className="App" >
-      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"></meta>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
-      <meta name="HandheldFriendly" content="true"></meta>
           <Header></Header>
-          <br />
           <div>
             <Balance></Balance>
           </div>
