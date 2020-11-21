@@ -6,27 +6,30 @@ import Balance from './Components/Balance';
 import Form from './Components/Form';
 import Header from './Components/Header';
 import TransactionHistory from './Components/TransactionHistory';
+import { GlobalProvider } from './Context/GlobalContext';
 
 function App() {
   return (
     <div className="App" >
-          <Header></Header>
-          <div>
-            <Balance></Balance>
-          </div>
-          <div>
-            <AccountSummary></AccountSummary>
-            <br />
-          </div>
-          <div>
-            <TransactionHistory></TransactionHistory>
-          </div>
-          <div>
-            <AddTransaction></AddTransaction>
-          </div>
-          <div>
-            <Form></Form>
-          </div>
+      <GlobalProvider>
+        <Header></Header>
+        <div>
+          <Balance></Balance>
+        </div>
+        <div>
+          <AccountSummary></AccountSummary>
+          <br />
+        </div>
+        <div>
+          <TransactionHistory></TransactionHistory>
+        </div>
+        <div>
+          <AddTransaction></AddTransaction>
+        </div>
+        <div>
+          <Form></Form>
+        </div>
+      </GlobalProvider>
     </div>
   );
 }

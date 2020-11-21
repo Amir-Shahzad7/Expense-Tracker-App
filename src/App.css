@@ -31,6 +31,16 @@
   margin-top: 30px;
   line-height: 5px;
 }
+.List{
+  list-style-type: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+}
 .AddTransaction{
   margin-top: 50px;
   line-height: 5px;
