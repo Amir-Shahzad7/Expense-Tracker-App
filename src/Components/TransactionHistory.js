@@ -13,7 +13,7 @@ const TransactionHistory = () => {
                 <hr className="HorizontalLine"></hr>
             </div>
             {transactions.map(transactions => (
-                <Transaction transactions={transactions}></Transaction>
+                <Transaction key={transactions.id} transactions={transactions}></Transaction>
             )
             )}
 
