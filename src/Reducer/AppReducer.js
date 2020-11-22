@@ -2,7 +2,7 @@ const AppReducer = () => {
     return (
         (state, action) => {
             switch (action.type) {
-                case "AddTransaction": {
+                case "AddTransactions": {
                     return [action.payload, ...state]
                 }
                 default:
