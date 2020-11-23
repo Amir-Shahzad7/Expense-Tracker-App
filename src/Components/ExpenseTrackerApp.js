@@ -1,0 +1,101 @@
+import React, { useContext, useState } from 'react';
+import { GlobalContext } from '../Context/GlobalContext';
+
+const ExpenseTrackerApp = () => {
+    let { transactions, addTransactions } = useContext(GlobalContext);
+    let [newText, setText] = useState("");
+    let [newAmount, setAmount] = useState(0);
+
+    let handleAddition = (event) => {
+        event.preventDefault();
+        if (Number(newAmount) === 0){
+            alert("Please enter a Valid amount.");
+            return false;
+        }
+        addTransactions({
+            text: newText,
+            amount: Number(newAmount),
+        })
+    }
+
+    const getIncome = () => {
+        let income = 0;
+        for (var i = 0; i < transactions.length; i++) {
+            if (transactions[i].amount > 0) {
+                income = income + transactions[i].amount;
+            }
+        }
+        return income;
+    }
+
+    const getExpense = () => {
+        let expense = 0;
+        for (var i = 0; i < transactions.length; i++) {
+            if (transactions[i].amount < 0) {
+                expense = expense + transactions[i].amount;
+            }
+        }
+        return expense;
+    }
+
+    return (
+        <div>
+            <div className="ExpenseTrackerApp">
+                <h2>Expense Tracker</h2>
+            </div>
+            <div className="Balance">
+                <h4>YOUR BALANCE</h4>
+                <h1>${getIncome() + getExpense()}</h1>
+            </div>
+            <div>
+                <div className="IncomeExpenseContainer">
+                    <div>
+                        <h4><b>INCOME</b></h4>
+                        <p style={{ fontSize: "20px", color: "#2ECC71" }}>${getIncome()}</p>
+                    </div>
+                    <p style={{ borderRight: "1px solid #dedede" }}></p>
+                    <div>
+                        <h4><b>EXPENSES</b></h4>
+                        <p style={{ fontSize: "20px", color: "#C8392B" }}>${getExpense()}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="TransactionHistory">
+                <h3>History</h3>
+                <hr className="HorizontalLine"></hr>
+                <ul className="List">
+                    {transactions.map((transObj, ind) => {
+                        return (
+                            <li key={ind}>
+                                <span>{transObj.text}</span>
+                                <span>${transObj.amount}</span>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+            <div>
+                <div className="AddTransaction">
+                    <h3>Add new transaction</h3>
+                    <hr className="HorizontalLine"></hr>
+                </div>
+                <div className="Form">
+                    <form onSubmit={handleAddition}>
+                        <label>Text</label>
+                        <br />
+                        <input type="text" required onChange={(ev) => setText(ev.target.value)} className="InputBoxes" placeholder="Enter text..."></input>
+                        <br />
+                        <br />
+                        <label>Amount<br />(negative - expense, positive - income)</label>
+                        <br />
+                        <input type="number" required onChange={(ev) => setAmount(ev.target.value)} className="InputBoxes" placeholder="Enter amount..."></input>
+                        <br />
+                        <input type="submit" value="Add transaction" className="AddButton"></input>
+                    </form>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default ExpenseTrackerApp;
