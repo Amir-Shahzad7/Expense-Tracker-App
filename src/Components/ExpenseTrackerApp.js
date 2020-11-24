@@ -4,7 +4,7 @@ import { GlobalContext } from '../Context/GlobalContext';
 const ExpenseTrackerApp = () => {
     let { transactions, addTransactions } = useContext(GlobalContext);
     let [newText, setText] = useState("");
-    let [newAmount, setAmount] = useState(0);
+    let [newAmount, setAmount] = useState("");
 
     let handleAddition = (event) => {
         event.preventDefault();
@@ -16,8 +16,11 @@ const ExpenseTrackerApp = () => {
             text: newText,
             amount: Number(newAmount),
         })
-    }
 
+        setText("");
+        setAmount("");
+       
+    }
     const getIncome = () => {
         let income = 0;
         for (var i = 0; i < transactions.length; i++) {
@@ -45,18 +48,18 @@ const ExpenseTrackerApp = () => {
             </div>
             <div className="Balance">
                 <h4>YOUR BALANCE</h4>
-                <h1>${getIncome() + getExpense()}</h1>
+                <h1>${(getIncome() + getExpense()).toFixed(2)}</h1>
             </div>
             <div>
                 <div className="IncomeExpenseContainer">
                     <div>
                         <h4><b>INCOME</b></h4>
-                        <p style={{ fontSize: "20px", color: "#2ECC71" }}>${getIncome()}</p>
+                        <p style={{ fontSize: "20px", color: "#2ECC71" }}>${(getIncome()).toFixed(2)}</p>
                     </div>
                     <p style={{ borderRight: "1px solid #dedede" }}></p>
                     <div>
                         <h4><b>EXPENSES</b></h4>
-                        <p style={{ fontSize: "20px", color: "#C8392B" }}>${getExpense()}</p>
+                        <p style={{ fontSize: "20px", color: "#C8392B" }}>${(getExpense()).toFixed(2)}</p>
                     </div>
                 </div>
             </div>
@@ -66,7 +69,7 @@ const ExpenseTrackerApp = () => {
                 <ul className="List">
                     {transactions.map((transObj, ind) => {
                         return (
-                            <li key={ind}>
+                            <li key={ind} className={transObj.amount < 0 ? 'minus' : 'plus'}>
                                 <span>{transObj.text}</span>
                                 <span>${transObj.amount}</span>
                             </li>
@@ -83,14 +86,14 @@ const ExpenseTrackerApp = () => {
                     <form onSubmit={handleAddition}>
                         <label>Text</label>
                         <br />
-                        <input type="text" required onChange={(ev) => setText(ev.target.value)} className="InputBoxes" placeholder="Enter text..."></input>
+                        <input type="text" value={newText} required onChange={(ev) => setText(ev.target.value)} className="InputBoxes" placeholder="Enter text..."></input>
                         <br />
                         <br />
                         <label>Amount<br />(negative - expense, positive - income)</label>
                         <br />
-                        <input type="number" required onChange={(ev) => setAmount(ev.target.value)} className="InputBoxes" placeholder="Enter amount..."></input>
+                        <input type="number" value={newAmount} required onChange={(ev) => setAmount(ev.target.value)} className="InputBoxes" placeholder="Enter amount..."></input>
                         <br />
-                        <input type="submit" value="Add transaction" className="AddButton"></input>
+                        <input type="submit" value="Add transaction" className="AddButton" ></input>
                     </form>
                 </div>
             </div>

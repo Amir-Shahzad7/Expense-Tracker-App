@@ -46,6 +46,18 @@
   padding: 15px 10px;
   margin: 10px 0;
 }
+.List > li.plus{
+  border-right: 5px solid #2ecc71;
+}
+.List > li.plus:hover{
+  background-color: #2ecc71;
+}
+.List > li.minus{
+  border-right: 5px solid #c0392b;
+}
+.List > li.minus:hover{
+  background-color: #c0392b;
+}
 .AddTransaction{
   margin-top: 50px;
   line-height: 5px;
@@ -79,6 +91,21 @@
   border-width: 0px;
   height: 40px;
   margin-bottom: 50px;
+}
+.DeleteButton{
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 @media (max-width: 320px) {
