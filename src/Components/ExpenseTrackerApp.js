@@ -8,19 +8,21 @@ const ExpenseTrackerApp = () => {
 
     let handleAddition = (event) => {
         event.preventDefault();
-        if (Number(newAmount) === 0){
+        if (Number(newAmount) === 0) {
             alert("Please enter a Valid amount.");
             return false;
         }
         addTransactions({
+            id: Math.floor(Math.random() * 100000000),
             text: newText,
             amount: Number(newAmount),
         })
 
         setText("");
         setAmount("");
-       
+
     }
+
     const getIncome = () => {
         let income = 0;
         for (var i = 0; i < transactions.length; i++) {
@@ -41,6 +43,12 @@ const ExpenseTrackerApp = () => {
         return expense;
     }
 
+    const balance = () => {
+        return getIncome() + getExpense();
+    }
+
+    const sign = balance() < 0 ? '-' : '';
+
     return (
         <div>
             <div className="ExpenseTrackerApp">
@@ -48,7 +56,7 @@ const ExpenseTrackerApp = () => {
             </div>
             <div className="Balance">
                 <h4>YOUR BALANCE</h4>
-                <h1>${(getIncome() + getExpense()).toFixed(2)}</h1>
+                <h1>{sign}${Math.abs(balance()).toFixed(2)}</h1>
             </div>
             <div>
                 <div className="IncomeExpenseContainer">
@@ -59,7 +67,7 @@ const ExpenseTrackerApp = () => {
                     <p style={{ borderRight: "1px solid #dedede" }}></p>
                     <div>
                         <h4><b>EXPENSES</b></h4>
-                        <p style={{ fontSize: "20px", color: "#C8392B" }}>${(getExpense()).toFixed(2)}</p>
+                        <p style={{ fontSize: "20px", color: "#C8392B" }}>${Math.abs((getExpense())).toFixed(2)}</p>
                     </div>
                 </div>
             </div>
@@ -68,10 +76,11 @@ const ExpenseTrackerApp = () => {
                 <hr className="HorizontalLine"></hr>
                 <ul className="List">
                     {transactions.map((transObj, ind) => {
+                        const sign = transObj.amount > 0 ? '+' : '-';
                         return (
                             <li key={ind} className={transObj.amount < 0 ? 'minus' : 'plus'}>
                                 <span>{transObj.text}</span>
-                                <span>${transObj.amount}</span>
+                                <span>{sign}${Math.abs(transObj.amount)}</span>
                             </li>
                         )
                     })}
