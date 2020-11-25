@@ -79,7 +79,7 @@ const ExpenseTrackerApp = () => {
                         const sign = transObj.amount > 0 ? '+' : '-';
                         return (
                             <li key={ind} className={transObj.amount < 0 ? 'minus' : 'plus'}>
-                                <span>{transObj.text}</span>
+                                {transObj.text}
                                 <span>{sign}${Math.abs(transObj.amount)}</span>
                                 <button className="DeleteButton" onClick={() => {deleteTransactions(transObj.id)}}>x</button>
                             </li>
