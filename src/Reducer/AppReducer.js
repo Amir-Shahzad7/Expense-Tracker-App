@@ -3,6 +3,9 @@ const TransactionReducer = ((state, action) => {
         case "AddTransactions": {
             return [action.payload, ...state]
         }
+        case "DeleteTransactions":
+            return state.filter(transactions => transactions.id !== action.payload)
+
         default:
             return state;
     }

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../Context/GlobalContext';
 
 const ExpenseTrackerApp = () => {
-    let { transactions, addTransactions } = useContext(GlobalContext);
+    let { transactions, addTransactions, deleteTransactions } = useContext(GlobalContext);
     let [newText, setText] = useState("");
     let [newAmount, setAmount] = useState("");
 
@@ -81,6 +81,7 @@ const ExpenseTrackerApp = () => {
                             <li key={ind} className={transObj.amount < 0 ? 'minus' : 'plus'}>
                                 <span>{transObj.text}</span>
                                 <span>{sign}${Math.abs(transObj.amount)}</span>
+                                <button className="DeleteButton" onClick={() => {deleteTransactions(transObj.id)}}>x</button>
                             </li>
                         )
                     })}
